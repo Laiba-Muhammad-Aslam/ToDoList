@@ -18,8 +18,8 @@
 }
 .row{
     /* width: 30rem; */
-    width: 70%;
-    border: 5px solid yellow;
+    /* width: 70%; */
+    border: 3px solid #023e8a;
 }
 .header{
     border-radius: 30% 70% 100% 0% / 0% 0% 100% 100% ;
@@ -41,10 +41,34 @@
     font-weight: 500;
     font-style: normal;
 }
+#addItemInput{
+    outline: 1px solid #023e8a;
+    border: none;
+}
 #addbtn{
     border: none;
     background-color: #023e8a;
 }
 #task-list li{
     list-style-type: none;
+}
+.taskName{
+    outline: none;
+    border: none;
+    background: transparent;
+}
+#task-list li{
+    background: rgb(225, 223, 223);
+    padding: 0.5rem 0.78rem;
+    margin-bottom: 1rem;
+}
+#task-list input[type="text"] {
+    width: 70%;
+}
+#task-list input[type="checkbox"] {
+    width: 10%;
+    height: 1rem;
+}
+.body-bottom ul{
+    padding-left: 0;
 }
