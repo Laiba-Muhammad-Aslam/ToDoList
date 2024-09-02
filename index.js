@@ -29,15 +29,52 @@ addbtn.addEventListener("click", function() {
 
 function addItem(item) {
     console.log(item); 
-    // let task = document.createElement("li");
-    let task = `<li><input type="checkbox" class="me-2"><input type="text" value="Breakfast" disabled class="me-2"><i class="bi bi-pencil-fill me-2 fs-5" onclick="edit()"></i><i class="bi bi-trash3-fill fs-5" onclick="deleteList(event)"></i></li>`;
+    if(item === ""){
+        return;
+    }else{
+
+  
+    let task = document.createElement("li");
+    task.innerHTML = `<input type="checkbox" class="me-2 checkbox my-2">
+                      <input type="text" value="${item}" disabled class="me-2 taskName my-2">
+                      <i class="bi bi-pencil-fill me-2 fs-5 my-2" onclick="edit(event)"></i>
+                      <i class="bi bi-trash3-fill fs-5 my-2" onclick="deleteList(event)"></i>`  
     tasklist.appendChild(task);
-    task.innerText = `${item}`;
+    addItemInput.value = ""; // Clear the input field after adding the task
+
+    let checkBox = task.querySelector(".checkbox");
+    let taskName = task.querySelector(".taskName");
+
+    checkBox.addEventListener("change", function() {
+        if(checkBox.checked) {
+            taskName.style.textDecoration = "line-through";
+        } else {
+            taskName.style.textDecoration = "none";
+        }
+    });
+
+}
 }
 
-function edit(){}
+function edit(event){
+    let changeDisabled = event.target.parentNode.childNodes[2].disabled;
+    changeDisabled = false;
+    console.log(changeDisabled);
+    if(changeDisabled === false){
+        console.log(event.target.parentNode.childNodes[2].value);
+        // taskName.focus();
+        event.target.parentNode.childNodes[2].focus();
+    }
+    // console.log(event.target.parentNode.childNodes[2].disabled = true);
+}
 
 function deleteList(event){
     console.log(event.target.parentNode);
     event.target.parentNode.remove();
 }
+
+let deleteAll = document.getElementById("deleteAll");
+console.log(deleteAll);
+deleteAll.addEventListener("click", function(){
+    tasklist.innerHTML = "";
+})
