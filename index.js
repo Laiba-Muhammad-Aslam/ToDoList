@@ -14,6 +14,8 @@ let date = document.getElementById("date");
 let addItemInput = document.getElementById("addItemInput");
 let addbtn = document.getElementById("addbtn");
 let tasklist = document.getElementById("task-list");
+let tasks = document.getElementById("tasks");
+let tasksCompleted = document.getElementById("tasksCompleted");
 
 
 // let counter = 0;
@@ -36,6 +38,7 @@ addbtn.addEventListener("click", function() {
     // console.log(counter)
     totalTasks++;
     console.log("Total tasks " + totalTasks)
+    tasks.innerText = `Total Tasks: ${totalTasks}`;
     // console.log("Total tasks" + totalTasks);
 
 });
@@ -64,7 +67,11 @@ function addItem(item) {
         if(checkBox.checked) {
             taskName.style.textDecoration = "line-through";
             completedTasks++;
+            totalTasks--;
             console.log(completedTasks)
+            console.log("Total tasks: " + totalTasks);
+            tasksCompleted.innerText = `Completed Tasks: ${completedTasks}`
+            tasks.innerText = `Total Tasks: ${totalTasks}`;
         } else {
             taskName.style.textDecoration = "none";
         }
@@ -102,6 +109,9 @@ function edit(event) {
 function deleteList(event){
     console.log(event.target.parentNode);
     event.target.parentNode.remove();
+    totalTasks--;
+    // console.log("Delete after 1 item " + totalTasks);
+    tasks.innerText = `Total Tasks: ${totalTasks}`;
     // remainingTasks--;
     // console.log("after delete " + remainingTasks)
 }
@@ -110,4 +120,6 @@ let deleteAll = document.getElementById("deleteAll");
 console.log(deleteAll);
 deleteAll.addEventListener("click", function(){
     tasklist.innerHTML = "";
+    tasksCompleted.innerText = `Completed Tasks: 0`
+    tasks.innerText = `Total Tasks: 0`;
 })
