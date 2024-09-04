@@ -1,15 +1,3 @@
-// let date = document.getElementById("date");
-// console.log(date);
-
-// let currentDate = new Date();
-
-// let months = ["January", "February", "March", "April", "May", "June", 
-//               "July", "August", "September", "October", "November", "December"];
-
-// let month = months[currentDate.getMonth()];
-// console.log(currentDate.getDate(), month, currentDate.getFullYear());
-
-
 let date = document.getElementById("date");
 let addItemInput = document.getElementById("addItemInput");
 let addbtn = document.getElementById("addbtn");
@@ -17,8 +5,6 @@ let tasklist = document.getElementById("task-list");
 let tasks = document.getElementById("tasks");
 let tasksCompleted = document.getElementById("tasksCompleted");
 
-
-// let counter = 0;
 let totalTasks = 0;
 let completedTasks = 0;
 
@@ -33,13 +19,9 @@ date.innerText = `${currentDate.getDate()} ${month} ${currentDate.getFullYear()}
 addbtn.addEventListener("click", function() {
     let item = addItemInput.value;
     addItem(item);
-    // counter++;
-    // totalTasks = totalTasks + counter;
-    // console.log(counter)
     totalTasks++;
     console.log("Total tasks " + totalTasks)
     tasks.innerText = `Total Tasks: ${totalTasks}`;
-    // console.log("Total tasks" + totalTasks);
 
 });
 
@@ -61,7 +43,6 @@ function addItem(item) {
     let checkBox = task.querySelector(".checkbox");
     let taskName = task.querySelector(".taskName");
 
-    // let completedTasks = 0;
 
     checkBox.addEventListener("change", function() {
         if(checkBox.checked) {
@@ -76,9 +57,9 @@ function addItem(item) {
             taskName.style.textDecoration = "none";
         }
 
-        let remainingTasks = totalTasks - completedTasks;
+        // let remainingTasks = totalTasks - completedTasks;
         // var remainingTasks = totalTasks - completedTasks;
-        console.log("Remainig Tasks " + remainingTasks);
+        // console.log("Remainig Tasks " + remainingTasks);
     });
 
 }
@@ -120,6 +101,8 @@ let deleteAll = document.getElementById("deleteAll");
 console.log(deleteAll);
 deleteAll.addEventListener("click", function(){
     tasklist.innerHTML = "";
-    tasksCompleted.innerText = `Completed Tasks: 0`
-    tasks.innerText = `Total Tasks: 0`;
+    totalTasks = 0;
+    completedTasks = 0;
+    tasksCompleted.innerText = `Completed Tasks: ${completedTasks}`
+    tasks.innerText = `Total Tasks: ${totalTasks}`;
 })
